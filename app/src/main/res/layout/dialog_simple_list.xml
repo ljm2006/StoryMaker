@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/item_double_quotation_sentence"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/general_list_item_height"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_insert_double_quotation_sentence"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/item_bring_story_res"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/general_list_item_height"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_bring_another_story_resource"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/item_save_txt_file"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/general_list_item_height"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_save_txt_file"
+            />
+    </LinearLayout>
+</LinearLayout>

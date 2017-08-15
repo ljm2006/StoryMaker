@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">StoryMaker</string>
+    <string name="text_empty_list">스토리가 없습니다. 스토리를 추가해주세요!!</string>
+    <string name="text_title">제목 : </string>
+    <string name="hint_input_title">제목을 입력해주세요.</string>
+    <string name="hint_input_content">생각한 스토리를 마음껏 풀어내보세요.</string>
+    <string name="hint_input_res_name">이름을 입력하세요.</string>
+    <string name="hint_input_res_comment">이 리소스의 추가설명을 입력하세요.</string>
+    <string name="text_resource_setting">소재 설정</string>
+    <string name="text_making_story">스토리 만들기</string>
+    <string name="text_save_complete">저장 완료</string>
+    <string name="text_select">선택</string>
+    <string name="text_register">등록</string>
+    <string name="text_cancel">취소</string>
+    <string name="text_select_cancel">선택 취소</string>
+    <string name="text_info">정보</string>
+    <string name="text_title_not_named">제목 미정</string>
+    <string name="text_yes">예</string>
+    <string name="text_no">아니오</string>
+    <string name="text_character_list">인물 목록</string>
+    <string name="text_place_list">장소 목록</string>
+    <string name="text_concept_list">컨셉 목록</string>
+    <string name="text_close">닫기</string>
+    <string name="text_add">추가</string>
+    <string name="text_title_name">이름 : </string>
+    <string name="text_title_priority">우선 순위 : </string>
+    <string name="text_title_comment">추가 설명 : </string>
+    <string name="text_please_input_name">이름을 입력해주세요.</string>
+    <string name="text_select_story_coping_resource">가져올 리소스가 있는 스토리를 선택하세요</string>
+    <string name="text_complete_resource_copy">리소스 복사 완료</string>
+    <string name="text_wrong_target">올바른 대상이 아닙니다.</string>
+
+    <string name="question_delete_story">선택한 스토리를 삭제하시겠습니까?</string>
+    <string name="question_delete_specific_res">%s 리소스를 삭제하시겠습니까?</string>
+
+    <string name="text_bring_another_story_resource">리소스 가져오기</string>
+    <string name="text_insert_double_quotation_sentence">큰 따옴표 문장 넣기</string>
+    <string name="text_save_txt_file">텍스트파일로 저장</string>
+</resources>

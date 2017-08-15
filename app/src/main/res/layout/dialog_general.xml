@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_general"
+    android:orientation="vertical"
+    android:layout_width="@dimen/general_dialog_width"
+    android:layout_height="@dimen/general_dialog_height">
+    <!--header-->
+    <LinearLayout
+        android:id="@+id/dialog_header"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/color_white"
+        >
+        <TextView
+            android:id="@+id/text_dialog_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/horizontal_margin_activity"
+            android:text="Header"
+            android:textSize="@dimen/dialog_header_text_size"
+            />
+
+    </LinearLayout>
+    <!--content-->
+    <LinearLayout
+        android:id="@+id/dialog_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:background="@color/color_white"
+        >
+        <ListView
+            android:id="@+id/list_general_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
+    <!--footer-->
+    <LinearLayout
+        android:id="@+id/dialog_footer"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/color_white"
+        android:gravity="center"
+        >
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_yes"
+            />
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_no"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

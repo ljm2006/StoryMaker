@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--drawerLayout 영역-->
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/layout_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+        <!--drawer 영역-->
+        <LinearLayout
+            android:id="@+id/drawer"
+            android:orientation="vertical"
+            android:layout_width="@dimen/drawer_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/color_white"
+            >
+
+            <include layout="@layout/drawer_res"/>
+
+        </LinearLayout>
+        <!--content 영역-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 제목 레이아웃-->
+            <LinearLayout
+                android:id="@+id/layout_top"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
+                <EditText
+                    android:id="@+id/edit_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:paddingLeft="@dimen/horizontal_margin_activity"
+                    android:hint="@string/hint_input_title"
+                    />
+
+            </LinearLayout>
+            <!-- 경계선 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_silver"
+                />
+            <!-- 내용 레이아웃-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                >
+
+                <EditText
+                    android:id="@+id/edit_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:paddingTop="@dimen/horizontal_margin_activity"
+                    android:paddingLeft="@dimen/horizontal_margin_activity"
+                    android:hint="@string/hint_input_content"
+                    />
+            </LinearLayout>
+            <!-- 경계선 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_silver"
+                />
+
+            <!-- 하단 바 레이아웃 -->
+            <LinearLayout
+                android:id="@+id/layout_bottom"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:id="@+id/img_human"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_human"
+                        android:scaleType="centerInside"
+                        android:padding="@dimen/horizontal_margin_activity"
+                        />
+
+                    <ImageView
+                        android:id="@+id/img_place"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_place"
+                        android:scaleType="centerInside"
+                        android:padding="@dimen/horizontal_margin_activity"
+                        />
+
+                    <ImageView
+                        android:id="@+id/img_bulb"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_bulb"
+                        android:scaleType="centerInside"
+                        android:padding="@dimen/horizontal_margin_activity"
+                        />
+
+                    <ImageView
+                        android:id="@+id/img_more_bottom"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_more_2"
+                        android:scaleType="centerInside"
+                        android:padding="@dimen/horizontal_margin_activity"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+</RelativeLayout>
