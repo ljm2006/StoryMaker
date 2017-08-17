@@ -340,7 +340,8 @@ public class StoryWritingFragment extends Fragment {
         dialog.setOnSimpleItemClickListener(new GeneralDialog.OnSimpleItemClickListener() {
             @Override
             public void onDoubleQuotationItemClick(View v) {
-
+                dialog.dismiss();
+                showInputSentenceDialog();
             }
 
             @Override
@@ -352,6 +353,29 @@ public class StoryWritingFragment extends Fragment {
             @Override
             public void onSaveTxtFileItemClick(View v) {
 
+            }
+        });
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        dialog.show(ft, null);
+    }
+
+    private void showInputSentenceDialog(){
+        final GeneralDialog dialog = new GeneralDialog();
+        Bundle args = new Bundle();
+        args.putInt("mode", GeneralDialog.MODE_INPUT_SENTENCE_DIALOG);
+        dialog.setArguments(args);
+        dialog.setOnInputListener(new GeneralDialog.OnInputListener() {
+            @Override
+            public void onInput(String contents) {
+                edit_content.append(contents);
+                edit_content.setSelection(edit_content.length());
+                dialog.dismiss();
+            }
+        });
+        dialog.setOnCancelButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();

@@ -1,9 +1,11 @@
 package com.story.ljm.storymaker.util;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -36,6 +38,7 @@ public class GeneralDialog extends DialogFragment {
     public static final int MODE_EDIT_RES_DIALOG = 3;
     public static final int MODE_RES_DESC_DIALOG = 4;
     public static final int MODE_LIST_DIALOG = 5;
+    public static final int MODE_INPUT_SENTENCE_DIALOG = 6;
 
     private int mode;
     private int priority = 3;
@@ -48,6 +51,7 @@ public class GeneralDialog extends DialogFragment {
     private OnRegisterListener callback_register;
     private AdapterView.OnItemClickListener itemClickListener;
     private OnSimpleItemClickListener callback_simple_item;
+    private OnInputListener callback_input;
     /**
      * 다이얼로그 모드별 추가 args값 요구 설명
      * !!!!중요!!!! 반드시 mode args값을 추가해야한다.
@@ -63,7 +67,7 @@ public class GeneralDialog extends DialogFragment {
         final Bundle args = getArguments();
         mode = args.getInt("mode", 0);
 
-        Dialog dialog = new Dialog(getActivity());
+        final Dialog dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCanceledOnTouchOutside(false);
 
@@ -96,6 +100,16 @@ public class GeneralDialog extends DialogFragment {
             }
             case MODE_ADD_RES_DIALOG:{
                 dialog.setContentView(R.layout.dialog_add_resource);
+                //back키를 안먹게 하기...
+                dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                    @Override
+                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                        if(keyCode == KeyEvent.KEYCODE_BACK){
+                            return true;
+                        }
+                        return false;
+                    }
+                });
                 final EditText edit_res_name = (EditText) dialog.findViewById(R.id.edit_res_name);
                 final EditText edit_res_comment = (EditText) dialog.findViewById(R.id.edit_res_comment);
                 final ImageButton imgBtn_star_1 = (ImageButton) dialog.findViewById(R.id.img_btn_star_1);
@@ -362,7 +376,32 @@ public class GeneralDialog extends DialogFragment {
                 item_double_quote.setOnClickListener(simple_listClick_listener);
                 item_bring_story_res.setOnClickListener(simple_listClick_listener);
                 item_save_txt_file.setOnClickListener(simple_listClick_listener);
-
+                break;
+            }
+            case MODE_INPUT_SENTENCE_DIALOG:{
+                dialog.setContentView(R.layout.dialog_input_sentence);
+                //back키를 안먹게 하기...
+                dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                    @Override
+                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                        if(keyCode == KeyEvent.KEYCODE_BACK){
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                final EditText edit_input_sentence = (EditText) dialog.findViewById(R.id.edit_input_sentence);
+                Button btn_input = (Button) dialog.findViewById(R.id.btn_input);
+                Button btn_cancel = (Button) dialog.findViewById(R.id.btn_cancel);
+                btn_input.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        callback_input.onInput("\n\"" + edit_input_sentence.getText().toString() + "\"\n");
+                        dialog.dismiss();
+                    }
+                });
+                btn_cancel.setOnClickListener(cancelBtnListener);
+                break;
             }
         }
 
@@ -388,6 +427,10 @@ public class GeneralDialog extends DialogFragment {
 
     public void setOnSimpleItemClickListener(OnSimpleItemClickListener listener){
         callback_simple_item = listener;
+    }
+
+    public void setOnInputListener(OnInputListener listener){
+        callback_input = listener;
     }
 
     private class StoryListAdapter extends BaseAdapter{
@@ -440,5 +483,9 @@ public class GeneralDialog extends DialogFragment {
         void onDoubleQuotationItemClick(View v);
         void onBringStoryResourceItemClick(View v);
         void onSaveTxtFileItemClick(View v);
+    }
+
+    public interface OnInputListener{
+        void onInput(String contents);
     }
 }
