@@ -31,9 +31,12 @@
     <string name="text_complete_resource_copy">리소스 복사 완료</string>
     <string name="text_wrong_target">올바른 대상이 아닙니다.</string>
     <string name="text_input_sentence">문장을 입력하세요.</string>
+    <string name="text_saving">저장하는 중입니다.</string>
+    <string name="text_permission_granted">권한이 허가되었습니다. 다시한번 실행해주세요.</string>
 
     <string name="question_delete_story">선택한 스토리를 삭제하시겠습니까?</string>
     <string name="question_delete_specific_res">%s 리소스를 삭제하시겠습니까?</string>
+    <string name="question_save_file">작성된 스토리를 txt파일로 저장하시겠습니까?(StoryMaker 폴더에 저장됩니다.)</string>
 
     <string name="text_bring_another_story_resource">리소스 가져오기</string>
     <string name="text_insert_double_quotation_sentence">큰 따옴표 문장 넣기</string>

@@ -1,10 +1,13 @@
 package com.story.ljm.storymaker.fragment;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,11 +30,13 @@ import com.story.ljm.storymaker.dao.ConceptItem;
 import com.story.ljm.storymaker.dao.PlaceItem;
 import com.story.ljm.storymaker.loader.DataLoader;
 import com.story.ljm.storymaker.manager.DatabaseManager;
+import com.story.ljm.storymaker.task.FileSavingTask;
 import com.story.ljm.storymaker.util.Constant;
 import com.story.ljm.storymaker.util.GeneralDialog;
 import com.story.ljm.storymaker.util.GeneralUtil;
 
 import java.util.ArrayList;
+import java.util.jar.Manifest;
 
 /**
  * Created by ljm on 2017-05-17.
@@ -369,9 +374,42 @@ public class StoryWritingFragment extends Fragment {
 
             @Override
             public void onSaveTxtFileItemClick(View v) {
+                dialog.dismiss();
+                if(ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                    showSavingFileDialog();
+                }else{
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constant.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION);
+                }
 
             }
         });
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        dialog.show(ft, null);
+    }
+
+    private void showSavingFileDialog(){
+        final GeneralDialog dialog = new GeneralDialog();
+        Bundle args = new Bundle();
+        args.putInt("mode", GeneralDialog.MODE_TEXT_CONFIRM_CANCEL_POPUP);
+        args.putString("msg",getString(R.string.question_save_file));
+        dialog.setArguments(args);
+
+        dialog.setOnConfirmButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                FileSavingTask task = new FileSavingTask(getActivity(), edit_content.getText().toString(), getActivity().getSupportFragmentManager().beginTransaction());
+                task.execute();
+            }
+        });
+
+        dialog.setOnCancelButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         dialog.show(ft, null);
     }

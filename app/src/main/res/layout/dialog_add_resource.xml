@@ -26,12 +26,14 @@
                 android:text="@string/text_title_name"
                 android:textSize="@dimen/dialog_content_text_size"
                 android:layout_marginLeft="@dimen/horizontal_margin_activity"
+                android:layout_marginRight="@dimen/horizontal_margin_activity"
                 />
             <EditText
                 android:id="@+id/edit_res_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/horizontal_margin_activity"
+                android:layout_marginRight="@dimen/horizontal_margin_activity"
                 android:hint="@string/hint_input_res_name"
                 android:background="@null"
                 />
@@ -103,12 +105,14 @@
                 android:text="@string/text_title_comment"
                 android:textSize="@dimen/dialog_content_text_size"
                 android:layout_marginLeft="@dimen/horizontal_margin_activity"
+                android:layout_marginRight="@dimen/horizontal_margin_activity"
                 />
             <EditText
                 android:id="@+id/edit_res_comment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/horizontal_margin_activity"
+                android:layout_marginRight="@dimen/horizontal_margin_activity"
                 android:hint="@string/hint_input_res_comment"
                 android:background="@null"
                 />

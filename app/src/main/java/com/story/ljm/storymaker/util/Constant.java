@@ -13,5 +13,6 @@ public class Constant {
     public static final String NAME_TABLE_PLACE = "Place_";
     public static final String NAME_TABLE_CONCEPT = "Concept_";
 
+    public static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 1000;
 
 }

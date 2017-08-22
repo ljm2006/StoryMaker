@@ -1,13 +1,16 @@
 package com.story.ljm.storymaker;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.story.ljm.storymaker.fragment.StoryListFragment;
 import com.story.ljm.storymaker.fragment.StoryWritingFragment;
 import com.story.ljm.storymaker.loader.DataLoader;
 import com.story.ljm.storymaker.manager.DatabaseManager;
+import com.story.ljm.storymaker.util.Constant;
 import com.story.ljm.storymaker.util.GeneralUtil;
 
 public class MasterActivity extends AppCompatActivity{
@@ -69,6 +72,16 @@ public class MasterActivity extends AppCompatActivity{
             super.onBackPressed();
         }
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case Constant.REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:{
+                Toast.makeText(this, getString(R.string.text_permission_granted), Toast.LENGTH_LONG).show();
+                break;
+            }
+        }
     }
 
     public interface OnBackTouchListener{

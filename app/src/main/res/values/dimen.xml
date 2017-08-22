@@ -14,7 +14,7 @@
     <dimen name="dialog_content_text_size">16dp</dimen>
     <dimen name="drawer_width">300dp</dimen>
     <dimen name="res_desc_dialog_width">300dp</dimen>
-    <dimen name="res_desc_dialog_height">300dp</dimen>
+    <dimen name="res_desc_dialog_height">350dp</dimen>
 
     <dimen name="dialog_width_small">300dp</dimen>
     <dimen name="dialog_width_medium">350dp</dimen>

@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ public class GeneralDialog extends DialogFragment {
     public static final int MODE_RES_DESC_DIALOG = 4;
     public static final int MODE_LIST_DIALOG = 5;
     public static final int MODE_INPUT_SENTENCE_DIALOG = 6;
+    public static final int MODE_TEXT_PROGRESS_BAR_DIALOG = 7;
 
     private int mode;
     private int priority = 3;
@@ -203,6 +205,15 @@ public class GeneralDialog extends DialogFragment {
             }
             case MODE_EDIT_RES_DIALOG:{
                 dialog.setContentView(R.layout.dialog_add_resource);
+                dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                    @Override
+                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                        if(keyCode == KeyEvent.KEYCODE_BACK){
+                            return true;
+                        }
+                        return false;
+                    }
+                });
                 final EditText edit_res_name = (EditText) dialog.findViewById(R.id.edit_res_name);
                 final EditText edit_res_comment = (EditText) dialog.findViewById(R.id.edit_res_comment);
                 edit_res_name.setText(args.getString("name"));
@@ -401,6 +412,24 @@ public class GeneralDialog extends DialogFragment {
                     }
                 });
                 btn_cancel.setOnClickListener(cancelBtnListener);
+                break;
+            }
+            case MODE_TEXT_PROGRESS_BAR_DIALOG:{
+                dialog.setContentView(R.layout.dialog_progress_text);
+                dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                    @Override
+                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                        if(keyCode == KeyEvent.KEYCODE_BACK){
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                String msg = args.getString("msg");
+                TextView text_progressing = (TextView) dialog.findViewById(R.id.text_progressing);
+                text_progressing.setText(msg);
+                ProgressBar progressBar = (ProgressBar) dialog.findViewById(R.id.progress_bar);
+                progressBar.animate();
                 break;
             }
         }
