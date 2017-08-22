@@ -53,6 +53,9 @@ public class StoryWritingFragment extends Fragment {
     private LinearLayout drawer;
     private LinearLayout layout_top;
     private LinearLayout layout_bottom;
+    private LinearLayout layout_bottom_cursor;
+    private ImageView img_cursor_left;
+    private ImageView img_cursor_right;
 
     private ArrayList<CharacterItem> characterItemList;
     private ArrayList<PlaceItem> placeItemList;
@@ -91,6 +94,14 @@ public class StoryWritingFragment extends Fragment {
         img_place.setOnClickListener(bottomIconClickListener);
         img_bulb.setOnClickListener(bottomIconClickListener);
         img_more.setOnClickListener(bottomIconClickListener);
+
+        //키보드 활성화 되었을 때 나타나는 커서 이동 아이콘
+        img_cursor_left = (ImageView) v.findViewById(R.id.img_arrow_left);
+        img_cursor_right = (ImageView) v.findViewById(R.id.img_arrow_right);
+
+        img_cursor_left.setOnClickListener(bottomIconClickListener);
+        img_cursor_right.setOnClickListener(bottomIconClickListener);
+
 
         drawerLayout = (DrawerLayout) v.findViewById(R.id.layout_drawer);
         drawer = (LinearLayout) v.findViewById(R.id.drawer);
@@ -253,6 +264,9 @@ public class StoryWritingFragment extends Fragment {
                         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) layout_bottom.getLayoutParams();
                         params.weight = 2;
                         layout_bottom.setLayoutParams(params);
+
+                        layout_bottom_cursor = (LinearLayout) v.findViewById(R.id.layout_bottom_cursor);
+                        layout_bottom_cursor.setVisibility(View.VISIBLE);
                     }
                     isKeyBoardOpen = true;
                 }else if(isKeyBoardOpen){
@@ -265,6 +279,9 @@ public class StoryWritingFragment extends Fragment {
                     LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) layout_bottom.getLayoutParams();
                     params.weight = 1;
                     layout_bottom.setLayoutParams(params);
+
+                    layout_bottom_cursor = (LinearLayout) v.findViewById(R.id.layout_bottom_cursor);
+                    layout_bottom_cursor.setVisibility(View.GONE);
                     isKeyBoardOpen = false;
                 }
             }
@@ -382,6 +399,24 @@ public class StoryWritingFragment extends Fragment {
         dialog.show(ft, null);
     }
 
+    private void moveCursorLeft(){
+        int currentCursorPosition = edit_content.getSelectionStart();
+        if(currentCursorPosition == 0){
+            edit_content.setSelection(0);
+        }else{
+            edit_content.setSelection(currentCursorPosition - 1);
+        }
+    }
+
+    private void moveCursorRight(){
+        int currentCursorPosition = edit_content.getSelectionStart();
+        if (currentCursorPosition == edit_content.length()){
+            edit_content.setSelection(currentCursorPosition);
+        }else{
+            edit_content.setSelection(currentCursorPosition + 1);
+        }
+    }
+
 
     //하단바 아이콘 클릭 리스너
     private View.OnClickListener bottomIconClickListener = new View.OnClickListener() {
@@ -418,6 +453,14 @@ public class StoryWritingFragment extends Fragment {
 
                 case R.id.img_more_bottom:{
                     showSimpleListDialog();
+                    break;
+                }
+                case R.id.img_arrow_left:{
+                    moveCursorLeft();
+                    break;
+                }
+                case R.id.img_arrow_right:{
+                    moveCursorRight();
                     break;
                 }
             }

@@ -80,6 +80,45 @@
                 android:layout_height="1dp"
                 android:background="@color/color_silver"
                 />
+            <LinearLayout
+                android:id="@+id/layout_bottom_cursor"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|end"
+                    >
+                    <ImageView
+                        android:id="@+id/img_arrow_left"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_arrow_left"
+                        android:scaleType="centerInside"
+                        />
+                    <ImageView
+                        android:id="@+id/img_arrow_right"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_arrow_right"
+                        android:scaleType="centerInside"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- 경계선 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_silver"
+                />
 
             <!-- 하단 바 레이아웃 -->
             <LinearLayout
