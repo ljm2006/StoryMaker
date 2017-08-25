@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dialog_text_whole"
     android:orientation="vertical"
-    android:layout_width="@dimen/text_dialog_width"
-    android:layout_height="@dimen/text_dialog_height">
+    android:layout_width="@dimen/dialog_width_medium"
+    android:layout_height="@dimen/dialog_height_small">
 
     <LinearLayout
         android:orientation="horizontal"

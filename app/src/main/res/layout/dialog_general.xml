@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dialog_general"
     android:orientation="vertical"
-    android:layout_width="@dimen/general_dialog_width"
-    android:layout_height="@dimen/general_dialog_height">
+    android:layout_width="@dimen/dialog_width_medium"
+    android:layout_height="@dimen/dialog_height_large">
     <!--header-->
     <LinearLayout
         android:id="@+id/dialog_header"
@@ -19,23 +19,30 @@
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/horizontal_margin_activity"
             android:text="Header"
-            android:textSize="@dimen/dialog_header_text_size"
             />
 
     </LinearLayout>
+    <!--구분선-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_silver"
+        />
     <!--content-->
     <LinearLayout
         android:id="@+id/dialog_content"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="6"
         android:background="@color/color_white"
         >
         <ListView
             android:id="@+id/list_general_dialog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:divider="@color/color_silver"
+            android:dividerHeight="1dp"
             />
 
     </LinearLayout>
